@@ -11,7 +11,7 @@ greyColor = pygame.Color(150, 150, 150)
 
 WIDTH = 160    # 遊戲畫面寬
 HEIGHT = 100   # 遊戲畫面高
-SCALE = 20    # 放大比例 
+SCALE = 5    # 放大比例 
 
 screen = pygame.display.set_mode( ( WIDTH*SCALE, HEIGHT*SCALE ) )  # 設定遊戲視窗的尺寸(size)
 
