@@ -45,6 +45,7 @@ def main():
 
     # 建立clock時鐘物件，遊戲速度控制用
     fpsClock = pygame.time.Clock()
+    FPS = 7   # 設定遊戲每秒幀數
     
     # 創建遊戲顯示畫布(pygame顯示層)
     playSurface = pygame.display.set_mode((600, 460))
@@ -58,7 +59,7 @@ def main():
     score = 0                           # 初始得分
     
     while True:
-        fpsClock.tick(7)    # 控制遊戲速度
+        fpsClock.tick(FPS)   # 控制遊戲速度為每秒FPS幀
         
         # 逐一檢測pygame的事件佇列(Queue)，看看發生了哪些事件
         for e in event.get():
