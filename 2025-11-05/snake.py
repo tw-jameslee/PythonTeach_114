@@ -1,6 +1,5 @@
 import pygame
 
-
 pygame.init() # 初始化pygame的模組(一開始固定要寫的)
 
 # 定義頻色變數
