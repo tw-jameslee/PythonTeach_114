@@ -1,5 +1,5 @@
 import pygame
-# .....
+# .....===
 
 # 定義顏色
 COLOR_BLACK = (0, 0, 0)
