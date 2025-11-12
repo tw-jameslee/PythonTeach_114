@@ -20,7 +20,7 @@ gameSurface.fill(COLOR_BLACK) # 用黑色填滿畫布
 
 # 建立時鐘物件，遊戲速度控制用
 clock = pygame.time.Clock()
-FPS = 10  # 設定遊戲每秒幀數
+FPS = 7  # 設定遊戲每秒幀數
 
 running = True
 # 遊戲主迴圈
