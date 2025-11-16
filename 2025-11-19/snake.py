@@ -1,6 +1,6 @@
 import pygame
 import os
-import music
+import music, image
 
 # 遊戲常數設定
 FPS = 60 
@@ -30,8 +30,15 @@ pygame.mixer.init()
 music.load_sounds(assets_dir)  # 載入音樂、音效
 pygame.mixer.music.play(-1)  # 開始播放背景音樂，-1代表無限迴圈
 
+# 載入圖片資源
+image.load_images(assets_dir)
+
 # 主遊戲迴圈
 while True:
   for event in pygame.event.get():
     if event.type == pygame.QUIT:
       pygame.quit(); exit()
+  
+  screen.blit(image.background_img, (0, 0))  # 繪製背景圖片
+  pygame.display.flip()
+  clock.tick(FPS)
