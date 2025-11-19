@@ -16,7 +16,7 @@ fpsClock = pygame.time.Clock()
 FPS = 7   # 設定遊戲每秒幀數
 
 # 創建遊戲顯示畫布(pygame顯示層)
-gameSurface = pygame.display.set_mode((600, 460))
+gameSurface = pygame.display.set_mode((30*20, 23*20))
 pygame.display.set_caption('Snake Game')    # 設定視窗抬頭
 
 
@@ -59,8 +59,7 @@ def main():
     score = 0                           # 初始得分
     
     while True:
-        fpsClock.tick(FPS)   # 控制遊戲速度為每秒FPS幀
-        
+            
         # 逐一檢測pygame的事件佇列(Queue)，看看發生了哪些事件
         for e in event.get():
             
@@ -136,6 +135,7 @@ def main():
         elif snakePosition in snakeSegments[1:]:
             gameOver(gameSurface, score)
 
+    fpsClock.tick(FPS)   # 控制遊戲速度為每秒FPS幀
 
 if __name__ == "__main__":
     main()

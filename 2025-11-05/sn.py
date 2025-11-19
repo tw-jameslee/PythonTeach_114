@@ -2,9 +2,9 @@ import pygame
 
 
 # 定義顏色
-COLOR_BLACK = (0, 0, 0)
-COLOR_WHITE = (255, 255, 255)
-COLOR_RED = (255, 0, 0)
+COLOR_BLACK = pygame.Color(0, 0, 0)
+COLOR_WHITE = pygame.Color(255, 255, 255)
+COLOR_RED = pygame.Color(255, 0, 0)
 
 # 設定遊戲視窗大小
 WIDTH, HEIGHT = 60, 46
@@ -34,5 +34,5 @@ while running:
 
     # 遊戲邏輯和繪圖代碼放在這裡
 
-    pygame.display.flip()
+    pygame.display.update()  # 更新畫面
     clock.tick(FPS)  # 控制遊戲速度為每秒FPS幀
