@@ -103,8 +103,8 @@ def main():
         # 如果吃掉樹莓，則重新生成樹莓
         else:   
             raspberryPosition = (               
-                random.randrange(0, 600, 20),   # 隨機產生[0,600)之間間隔20的亂數
-                random.randrange(0, 460, 20)    # (0,20,40, ... 580)
+                random.randrange(0, 30) * 20,   # 隨機產生 0~29 再乘以20 (0,20,40, ... 580)
+                random.randrange(0, 23) * 20    # 隨機產生 0~22 再乘以20 (0,20,40, ... 440)
             )                                   # 註：randrange半開區間[)，randint閉區間[]
             score += 1
         
@@ -130,12 +130,14 @@ def main():
         (x, y) = snakePosition
         if not (0 <= x < 600 and 0 <= y < 460):  # 如果蛇頭在X、Y軸方向沒有在視窗範圍內
             gameOver(gameSurface, score)
+            break
 
         # 是否吃到自己身體
         elif snakePosition in snakeSegments[1:]:
             gameOver(gameSurface, score)
+            break
 
-    fpsClock.tick(FPS)   # 控制遊戲速度為每秒FPS幀
+        fpsClock.tick(FPS)   # 控制遊戲速度為每秒FPS幀
 
 if __name__ == "__main__":
     main()
