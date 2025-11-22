@@ -170,7 +170,7 @@ class MAIN:
 		screen.blit(apple,apple_rect)
 		pygame.draw.rect(screen,(56,74,12),bg_rect,2)
 
-os.chdir(os.path.dirname(os.path.abspath(__file__)))
+os.chdir(os.path.dirname(__file__))
 pygame.mixer.pre_init(44100,-16,2,512)
 pygame.init()
 cell_size = 40
