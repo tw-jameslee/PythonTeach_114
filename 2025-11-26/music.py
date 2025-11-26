@@ -21,7 +21,7 @@ def load_sounds(assets_dir):
   die_sound = pygame.mixer.Sound(die_sound_file)
 
   # 載入背景音樂
-  bgm_music_file = os.path.join(assets_dir, "bgm.wav")
+  bgm_music_file = os.path.join(assets_dir, "bgm2.wav")
   pygame.mixer.music.load(bgm_music_file)
   pygame.mixer.music.set_volume(1.0)  # 設定背景音樂音量0.1~1.0
   # pygame.mixer.music.play(-1)  # -1代表無限迴圈

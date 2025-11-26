@@ -6,7 +6,7 @@ import music
 WIDTH = 32      # 0~31 共32格
 HEIGHT = 24     # 0~23 共24格
 CELL_SIZE = 20  # 每格大小: 20像素
-FPS = 7         # 遊戲更新頻率(每秒幀數)
+FPS = 9         # 遊戲更新頻率(每秒幀數)
 # 顏色定義(RGB)
 BACKGROUND_COLOR = pygame.Color(175, 215, 70)   # R=175,G=215,B=70 綠色
 GRASS_COLOR = pygame.Color(167, 209, 61)  # R=167,G=209,B=61 草地色
@@ -14,8 +14,8 @@ HEAD_COLOR = pygame.Color(51, 51, 255)    # R=51,G=51,B=255 藍色
 BODY_COLOR = pygame.Color(91, 123, 249)   # R=91,G=123,B=249 藍色
 FRUIT_COLOR = pygame.Color(255, 0, 0)     # R=255,G=0,B=0 紅色
 
-# 取得上一層資料夾路徑，以便存取 assets 資料夾中的圖片、音效檔案
-pardir = os.path.dirname(os.path.dirname(__file__))
+# 取得本程式檔所在的資料夾路徑，以便存取上一層 assets 資料夾中的音效檔案
+pardir = os.path.dirname(__file__)
 assets_dir = os.path.join(pardir, "assets")   # assets資料夾路徑
 
 # 遊戲初始化
@@ -79,7 +79,6 @@ def get_new_fruit_pos():
 def draw_fruit():
   fruit_rect = (fruit_pos['x']*CELL_SIZE, fruit_pos['y']*CELL_SIZE, CELL_SIZE, CELL_SIZE)
   pygame.draw.rect(screen, FRUIT_COLOR, fruit_rect)
-  # screen.blit(image.fruit_img, fruit_rect)
 
 # 繪製蛇身
 def draw_snake():
@@ -102,17 +101,22 @@ def draw_score():
 def game_over():
   pygame.mixer.music.stop()  # 停止背景音樂
   music.die_sound.play()  # 播放遊戲結束音效
-  print(f"遊戲結束！你的得分是: {score}")
+  # 顯示遊戲結束訊息
+  font = pygame.font.SysFont('microsoftjhenghei,pingfang', 36)  # 使用系統字型，字型大小36
+  txtSurf = font.render(f"遊戲結束！你的得分是: {score}", True, (0, 100, 0))  # 綠色文字
+  txtRect = txtSurf.get_rect()  # 取得文字矩形物件
+  txtRect.center = (screen.get_width()//2 , screen.get_height()//2)  # 置中位置
+  screen.blit(txtSurf, txtRect) # 繪製在置中位置
+  pygame.display.flip()    # 更新畫面顯示
   pygame.time.delay(2000)  # 暫停2秒鐘讓玩家聽完音效
   pygame.quit(); sys.exit()
 
 # 初始化遊戲變數
 score = 0        # 初始分數
-direction = '右'  # 蛇的移動方向
+direction = ''   # 蛇的移動方向
 x, y = WIDTH // 2, HEIGHT // 2      # 蛇頭初始位置(從畫面中央開始)
 snake_body = [  {'x': x, 'y': y} ]  # 蛇身位置
 fruit_pos = get_new_fruit_pos()     # 取得初始果實位置
-# ate_food = False                    # 是否吃到果實的旗標
 
 # 主遊戲迴圈
 while True:
@@ -145,6 +149,7 @@ while True:
     head_y += 1
   elif direction == '上':
     head_y -= 1
+
   # 在蛇頭前加入新位置
   snake_body.insert(0, {'x': head_x, 'y': head_y})
 
