@@ -6,7 +6,7 @@ import music
 WIDTH = 32      # 0~31 共32格
 HEIGHT = 24     # 0~23 共24格
 CELL_SIZE = 20  # 每格大小: 20像素
-FPS = 9         # 遊戲更新頻率(每秒幀數)
+FPS = 7         # 遊戲更新頻率(每秒幀數)
 # 顏色定義(RGB)
 BACKGROUND_COLOR = pygame.Color(175, 215, 70)   # R=175,G=215,B=70 綠色
 GRASS_COLOR = pygame.Color(167, 209, 61)  # R=167,G=209,B=61 草地色
@@ -108,7 +108,7 @@ def game_over():
   txtRect.midbottom  = (screen.get_width()//2 , screen.get_height()//2)  # 置中位置
   screen.blit(txtSurf, txtRect) # 繪製在置中位置
   pygame.display.flip()    # 更新畫面顯示
-  pygame.time.delay(2000)  # 暫停2秒鐘讓玩家聽完音效
+  pygame.time.delay(4000)  # 暫停4秒鐘讓玩家聽完音效
   pygame.quit(); sys.exit()
   #
   # rect定位點說明範例
@@ -129,7 +129,7 @@ def game_over():
 
 # 初始化遊戲變數
 score = 0        # 初始分數
-direction = ''   # 蛇的移動方向
+direction = '右'   # 蛇的移動方向
 x, y = WIDTH // 2, HEIGHT // 2      # 蛇頭初始位置(從畫面中央開始)
 snake_body = [  {'x': x, 'y': y} ]  # 蛇身位置
 fruit_pos = get_new_fruit_pos()     # 取得初始果實位置
