@@ -93,23 +93,39 @@ def draw_snake():
 
 # 顯示分數
 def draw_score():
-  font = pygame.font.SysFont('microsoftjhenghei,pingfang', 36)  # 使用系統字型，字型大小36
+  font = pygame.font.SysFont('microsoftjhenghei', int(CELL_SIZE*1.2))  # 使用系統字型，字型大小1.2倍CELL_SIZE
   score_surf = font.render(f"分數: {score}", True, (0, 100, 0))  # 黑色文字
-  screen.blit(score_surf, (10, 10))  # 繪製在左上角(10,10)位置
+  screen.blit(score_surf, (10, 5))  # 繪製在左上角(10,10)位置
 
 # 遊戲結束處理函式
 def game_over():
   pygame.mixer.music.stop()  # 停止背景音樂
   music.die_sound.play()  # 播放遊戲結束音效
   # 顯示遊戲結束訊息
-  font = pygame.font.SysFont('microsoftjhenghei,pingfang', 36)  # 使用系統字型，字型大小36
-  txtSurf = font.render(f"遊戲結束！你的得分是: {score}", True, (0, 100, 0))  # 綠色文字
+  font = pygame.font.SysFont('microsoftjhenghei', int(CELL_SIZE*1.8))  # 使用系統字型，字型大小1.8倍CELL_SIZE
+  txtSurf = font.render(f"遊戲結束！你的得分是: {score} 分", True, (0, 100, 0))  # 綠色文字
   txtRect = txtSurf.get_rect()  # 取得文字矩形物件
-  txtRect.center = (screen.get_width()//2 , screen.get_height()//2)  # 置中位置
+  txtRect.midbottom  = (screen.get_width()//2 , screen.get_height()//2)  # 置中位置
   screen.blit(txtSurf, txtRect) # 繪製在置中位置
   pygame.display.flip()    # 更新畫面顯示
   pygame.time.delay(2000)  # 暫停2秒鐘讓玩家聽完音效
   pygame.quit(); sys.exit()
+  #
+  # rect定位點說明範例
+  #
+  #          topleft ────────── midtop ────────── topright
+  #          ●                  ●                  ●
+  #          │                                     │
+  #          │                                     │
+  #          │                                     │
+  #        midleft              center           midright
+  #          ●                  ●                  ●
+  #          │                                     │
+  #          │                                     │
+  #          │                                     │
+  #          ●                  ●                  ●
+  #        bottomleft ──────── midbottom ──────── bottomright
+  #
 
 # 初始化遊戲變數
 score = 0        # 初始分數
