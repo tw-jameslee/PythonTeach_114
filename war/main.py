@@ -21,6 +21,7 @@ pygame.display.set_caption("第一個遊戲")
 clock = pygame.time.Clock()
 
 # 載入圖片
+os.chdir(os.path.dirname(__file__))
 background_img = pygame.image.load(os.path.join("img", "background.png")).convert()
 player_img = pygame.image.load(os.path.join("img", "player.png")).convert()
 player_mini_img = pygame.transform.scale(player_img, (25, 19))
